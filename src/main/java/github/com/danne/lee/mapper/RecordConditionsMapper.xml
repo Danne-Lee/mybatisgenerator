@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="github.com.danne.lee.mapper.RecordConditionsMapper" >
+  <resultMap id="BaseResultMap" type="github.com.danne.lee.entity.RecordConditions" >
+    <id column="well_type" property="wellType" jdbcType="VARCHAR" />
+    <id column="cond_code" property="condCode" jdbcType="VARCHAR" />
+    <result column="cond_name" property="condName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    well_type, cond_code, cond_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="github.com.danne.lee.entity.RecordConditionsKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from record_conditions
+    where well_type = #{wellType,jdbcType=VARCHAR}
+      and cond_code = #{condCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="github.com.danne.lee.entity.RecordConditionsKey" >
+    delete from record_conditions
+    where well_type = #{wellType,jdbcType=VARCHAR}
+      and cond_code = #{condCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="github.com.danne.lee.entity.RecordConditions" >
+    insert into record_conditions (well_type, cond_code, cond_name
+      )
+    values (#{wellType,jdbcType=VARCHAR}, #{condCode,jdbcType=VARCHAR}, #{condName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="github.com.danne.lee.entity.RecordConditions" >
+    insert into record_conditions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wellType != null" >
+        well_type,
+      </if>
+      <if test="condCode != null" >
+        cond_code,
+      </if>
+      <if test="condName != null" >
+        cond_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wellType != null" >
+        #{wellType,jdbcType=VARCHAR},
+      </if>
+      <if test="condCode != null" >
+        #{condCode,jdbcType=VARCHAR},
+      </if>
+      <if test="condName != null" >
+        #{condName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="github.com.danne.lee.entity.RecordConditions" >
+    update record_conditions
+    <set >
+      <if test="condName != null" >
+        cond_name = #{condName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where well_type = #{wellType,jdbcType=VARCHAR}
+      and cond_code = #{condCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="github.com.danne.lee.entity.RecordConditions" >
+    update record_conditions
+    set cond_name = #{condName,jdbcType=VARCHAR}
+    where well_type = #{wellType,jdbcType=VARCHAR}
+      and cond_code = #{condCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

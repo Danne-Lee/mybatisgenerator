@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="github.com.danne.lee.mapper.PumpFullCoefficientMapper" >
+  <resultMap id="BaseResultMap" type="github.com.danne.lee.entity.PumpFullCoefficient" >
+    <id column="collect_time" property="collectTime" jdbcType="TIMESTAMP" />
+    <id column="well_code" property="wellCode" jdbcType="VARCHAR" />
+    <result column="full_coefficient" property="fullCoefficient" jdbcType="NUMERIC" />
+    <result column="threshold" property="threshold" jdbcType="NUMERIC" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    collect_time, well_code, full_coefficient, threshold
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="github.com.danne.lee.entity.PumpFullCoefficientKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from pump_full_coefficient
+    where collect_time = #{collectTime,jdbcType=TIMESTAMP}
+      and well_code = #{wellCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="github.com.danne.lee.entity.PumpFullCoefficientKey" >
+    delete from pump_full_coefficient
+    where collect_time = #{collectTime,jdbcType=TIMESTAMP}
+      and well_code = #{wellCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="github.com.danne.lee.entity.PumpFullCoefficient" >
+    insert into pump_full_coefficient (collect_time, well_code, full_coefficient, 
+      threshold)
+    values (#{collectTime,jdbcType=TIMESTAMP}, #{wellCode,jdbcType=VARCHAR}, #{fullCoefficient,jdbcType=NUMERIC}, 
+      #{threshold,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="github.com.danne.lee.entity.PumpFullCoefficient" >
+    insert into pump_full_coefficient
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="collectTime != null" >
+        collect_time,
+      </if>
+      <if test="wellCode != null" >
+        well_code,
+      </if>
+      <if test="fullCoefficient != null" >
+        full_coefficient,
+      </if>
+      <if test="threshold != null" >
+        threshold,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="collectTime != null" >
+        #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wellCode != null" >
+        #{wellCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fullCoefficient != null" >
+        #{fullCoefficient,jdbcType=NUMERIC},
+      </if>
+      <if test="threshold != null" >
+        #{threshold,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="github.com.danne.lee.entity.PumpFullCoefficient" >
+    update pump_full_coefficient
+    <set >
+      <if test="fullCoefficient != null" >
+        full_coefficient = #{fullCoefficient,jdbcType=NUMERIC},
+      </if>
+      <if test="threshold != null" >
+        threshold = #{threshold,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where collect_time = #{collectTime,jdbcType=TIMESTAMP}
+      and well_code = #{wellCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="github.com.danne.lee.entity.PumpFullCoefficient" >
+    update pump_full_coefficient
+    set full_coefficient = #{fullCoefficient,jdbcType=NUMERIC},
+      threshold = #{threshold,jdbcType=NUMERIC}
+    where collect_time = #{collectTime,jdbcType=TIMESTAMP}
+      and well_code = #{wellCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

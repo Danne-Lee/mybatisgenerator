@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="github.com.danne.lee.mapper.GtcjMapper" >
+  <resultMap id="BaseResultMap" type="github.com.danne.lee.entity.Gtcj" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="JH" property="jh" jdbcType="VARCHAR" />
+    <result column="CJSJ" property="cjsj" jdbcType="DATE" />
+    <result column="CC" property="cc" jdbcType="DECIMAL" />
+    <result column="CC1" property="cc1" jdbcType="DECIMAL" />
+    <result column="SXCC1" property="sxcc1" jdbcType="DECIMAL" />
+    <result column="XXCC1" property="xxcc1" jdbcType="DECIMAL" />
+    <result column="WY" property="wy" jdbcType="VARCHAR" />
+    <result column="DL" property="dl" jdbcType="VARCHAR" />
+    <result column="GL" property="gl" jdbcType="VARCHAR" />
+    <result column="ZH" property="zh" jdbcType="VARCHAR" />
+    <result column="BPQSCGL" property="bpqscgl" jdbcType="VARCHAR" />
+    <result column="ZJ" property="zj" jdbcType="VARCHAR" />
+    <result column="ZDZH" property="zdzh" jdbcType="DECIMAL" />
+    <result column="ZXZH" property="zxzh" jdbcType="DECIMAL" />
+    <result column="BZGT" property="bzgt" jdbcType="VARCHAR" />
+    <result column="GLYS" property="glys" jdbcType="DECIMAL" />
+    <result column="YGGL" property="yggl" jdbcType="DECIMAL" />
+    <result column="WGGL" property="wggl" jdbcType="DECIMAL" />
+    <result column="HY" property="hy" jdbcType="VARCHAR" />
+    <result column="RTUCJSJ" property="rtucjsj" jdbcType="DATE" />
+    <result column="DL_B" property="dlB" jdbcType="VARCHAR" />
+    <result column="DL_C" property="dlC" jdbcType="VARCHAR" />
+    <result column="RKSJ" property="rksj" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, JH, CJSJ, CC, CC1, SXCC1, XXCC1, WY, DL, GL, ZH, BPQSCGL, ZJ, ZDZH, ZXZH, BZGT, 
+    GLYS, YGGL, WGGL, HY, RTUCJSJ, DL_B, DL_C, RKSJ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SSC_SGT_GTCJ
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SSC_SGT_GTCJ
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="github.com.danne.lee.entity.Gtcj" >
+    insert into SSC_SGT_GTCJ (ID, JH, CJSJ, CC, 
+      CC1, SXCC1, XXCC1, 
+      WY, DL, GL, ZH, 
+      BPQSCGL, ZJ, ZDZH, 
+      ZXZH, BZGT, GLYS, YGGL, 
+      WGGL, HY, RTUCJSJ, DL_B, 
+      DL_C, RKSJ)
+    values (#{id,jdbcType=VARCHAR}, #{jh,jdbcType=VARCHAR}, #{cjsj,jdbcType=DATE}, #{cc,jdbcType=DECIMAL}, 
+      #{cc1,jdbcType=DECIMAL}, #{sxcc1,jdbcType=DECIMAL}, #{xxcc1,jdbcType=DECIMAL}, 
+      #{wy,jdbcType=VARCHAR}, #{dl,jdbcType=VARCHAR}, #{gl,jdbcType=VARCHAR}, #{zh,jdbcType=VARCHAR}, 
+      #{bpqscgl,jdbcType=VARCHAR}, #{zj,jdbcType=VARCHAR}, #{zdzh,jdbcType=DECIMAL}, 
+      #{zxzh,jdbcType=DECIMAL}, #{bzgt,jdbcType=VARCHAR}, #{glys,jdbcType=DECIMAL}, #{yggl,jdbcType=DECIMAL}, 
+      #{wggl,jdbcType=DECIMAL}, #{hy,jdbcType=VARCHAR}, #{rtucjsj,jdbcType=DATE}, #{dlB,jdbcType=VARCHAR}, 
+      #{dlC,jdbcType=VARCHAR}, #{rksj,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="github.com.danne.lee.entity.Gtcj" >
+    insert into SSC_SGT_GTCJ
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="jh != null" >
+        JH,
+      </if>
+      <if test="cjsj != null" >
+        CJSJ,
+      </if>
+      <if test="cc != null" >
+        CC,
+      </if>
+      <if test="cc1 != null" >
+        CC1,
+      </if>
+      <if test="sxcc1 != null" >
+        SXCC1,
+      </if>
+      <if test="xxcc1 != null" >
+        XXCC1,
+      </if>
+      <if test="wy != null" >
+        WY,
+      </if>
+      <if test="dl != null" >
+        DL,
+      </if>
+      <if test="gl != null" >
+        GL,
+      </if>
+      <if test="zh != null" >
+        ZH,
+      </if>
+      <if test="bpqscgl != null" >
+        BPQSCGL,
+      </if>
+      <if test="zj != null" >
+        ZJ,
+      </if>
+      <if test="zdzh != null" >
+        ZDZH,
+      </if>
+      <if test="zxzh != null" >
+        ZXZH,
+      </if>
+      <if test="bzgt != null" >
+        BZGT,
+      </if>
+      <if test="glys != null" >
+        GLYS,
+      </if>
+      <if test="yggl != null" >
+        YGGL,
+      </if>
+      <if test="wggl != null" >
+        WGGL,
+      </if>
+      <if test="hy != null" >
+        HY,
+      </if>
+      <if test="rtucjsj != null" >
+        RTUCJSJ,
+      </if>
+      <if test="dlB != null" >
+        DL_B,
+      </if>
+      <if test="dlC != null" >
+        DL_C,
+      </if>
+      <if test="rksj != null" >
+        RKSJ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="jh != null" >
+        #{jh,jdbcType=VARCHAR},
+      </if>
+      <if test="cjsj != null" >
+        #{cjsj,jdbcType=DATE},
+      </if>
+      <if test="cc != null" >
+        #{cc,jdbcType=DECIMAL},
+      </if>
+      <if test="cc1 != null" >
+        #{cc1,jdbcType=DECIMAL},
+      </if>
+      <if test="sxcc1 != null" >
+        #{sxcc1,jdbcType=DECIMAL},
+      </if>
+      <if test="xxcc1 != null" >
+        #{xxcc1,jdbcType=DECIMAL},
+      </if>
+      <if test="wy != null" >
+        #{wy,jdbcType=VARCHAR},
+      </if>
+      <if test="dl != null" >
+        #{dl,jdbcType=VARCHAR},
+      </if>
+      <if test="gl != null" >
+        #{gl,jdbcType=VARCHAR},
+      </if>
+      <if test="zh != null" >
+        #{zh,jdbcType=VARCHAR},
+      </if>
+      <if test="bpqscgl != null" >
+        #{bpqscgl,jdbcType=VARCHAR},
+      </if>
+      <if test="zj != null" >
+        #{zj,jdbcType=VARCHAR},
+      </if>
+      <if test="zdzh != null" >
+        #{zdzh,jdbcType=DECIMAL},
+      </if>
+      <if test="zxzh != null" >
+        #{zxzh,jdbcType=DECIMAL},
+      </if>
+      <if test="bzgt != null" >
+        #{bzgt,jdbcType=VARCHAR},
+      </if>
+      <if test="glys != null" >
+        #{glys,jdbcType=DECIMAL},
+      </if>
+      <if test="yggl != null" >
+        #{yggl,jdbcType=DECIMAL},
+      </if>
+      <if test="wggl != null" >
+        #{wggl,jdbcType=DECIMAL},
+      </if>
+      <if test="hy != null" >
+        #{hy,jdbcType=VARCHAR},
+      </if>
+      <if test="rtucjsj != null" >
+        #{rtucjsj,jdbcType=DATE},
+      </if>
+      <if test="dlB != null" >
+        #{dlB,jdbcType=VARCHAR},
+      </if>
+      <if test="dlC != null" >
+        #{dlC,jdbcType=VARCHAR},
+      </if>
+      <if test="rksj != null" >
+        #{rksj,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="github.com.danne.lee.entity.Gtcj" >
+    update SSC_SGT_GTCJ
+    <set >
+      <if test="jh != null" >
+        JH = #{jh,jdbcType=VARCHAR},
+      </if>
+      <if test="cjsj != null" >
+        CJSJ = #{cjsj,jdbcType=DATE},
+      </if>
+      <if test="cc != null" >
+        CC = #{cc,jdbcType=DECIMAL},
+      </if>
+      <if test="cc1 != null" >
+        CC1 = #{cc1,jdbcType=DECIMAL},
+      </if>
+      <if test="sxcc1 != null" >
+        SXCC1 = #{sxcc1,jdbcType=DECIMAL},
+      </if>
+      <if test="xxcc1 != null" >
+        XXCC1 = #{xxcc1,jdbcType=DECIMAL},
+      </if>
+      <if test="wy != null" >
+        WY = #{wy,jdbcType=VARCHAR},
+      </if>
+      <if test="dl != null" >
+        DL = #{dl,jdbcType=VARCHAR},
+      </if>
+      <if test="gl != null" >
+        GL = #{gl,jdbcType=VARCHAR},
+      </if>
+      <if test="zh != null" >
+        ZH = #{zh,jdbcType=VARCHAR},
+      </if>
+      <if test="bpqscgl != null" >
+        BPQSCGL = #{bpqscgl,jdbcType=VARCHAR},
+      </if>
+      <if test="zj != null" >
+        ZJ = #{zj,jdbcType=VARCHAR},
+      </if>
+      <if test="zdzh != null" >
+        ZDZH = #{zdzh,jdbcType=DECIMAL},
+      </if>
+      <if test="zxzh != null" >
+        ZXZH = #{zxzh,jdbcType=DECIMAL},
+      </if>
+      <if test="bzgt != null" >
+        BZGT = #{bzgt,jdbcType=VARCHAR},
+      </if>
+      <if test="glys != null" >
+        GLYS = #{glys,jdbcType=DECIMAL},
+      </if>
+      <if test="yggl != null" >
+        YGGL = #{yggl,jdbcType=DECIMAL},
+      </if>
+      <if test="wggl != null" >
+        WGGL = #{wggl,jdbcType=DECIMAL},
+      </if>
+      <if test="hy != null" >
+        HY = #{hy,jdbcType=VARCHAR},
+      </if>
+      <if test="rtucjsj != null" >
+        RTUCJSJ = #{rtucjsj,jdbcType=DATE},
+      </if>
+      <if test="dlB != null" >
+        DL_B = #{dlB,jdbcType=VARCHAR},
+      </if>
+      <if test="dlC != null" >
+        DL_C = #{dlC,jdbcType=VARCHAR},
+      </if>
+      <if test="rksj != null" >
+        RKSJ = #{rksj,jdbcType=DATE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="github.com.danne.lee.entity.Gtcj" >
+    update SSC_SGT_GTCJ
+    set JH = #{jh,jdbcType=VARCHAR},
+      CJSJ = #{cjsj,jdbcType=DATE},
+      CC = #{cc,jdbcType=DECIMAL},
+      CC1 = #{cc1,jdbcType=DECIMAL},
+      SXCC1 = #{sxcc1,jdbcType=DECIMAL},
+      XXCC1 = #{xxcc1,jdbcType=DECIMAL},
+      WY = #{wy,jdbcType=VARCHAR},
+      DL = #{dl,jdbcType=VARCHAR},
+      GL = #{gl,jdbcType=VARCHAR},
+      ZH = #{zh,jdbcType=VARCHAR},
+      BPQSCGL = #{bpqscgl,jdbcType=VARCHAR},
+      ZJ = #{zj,jdbcType=VARCHAR},
+      ZDZH = #{zdzh,jdbcType=DECIMAL},
+      ZXZH = #{zxzh,jdbcType=DECIMAL},
+      BZGT = #{bzgt,jdbcType=VARCHAR},
+      GLYS = #{glys,jdbcType=DECIMAL},
+      YGGL = #{yggl,jdbcType=DECIMAL},
+      WGGL = #{wggl,jdbcType=DECIMAL},
+      HY = #{hy,jdbcType=VARCHAR},
+      RTUCJSJ = #{rtucjsj,jdbcType=DATE},
+      DL_B = #{dlB,jdbcType=VARCHAR},
+      DL_C = #{dlC,jdbcType=VARCHAR},
+      RKSJ = #{rksj,jdbcType=DATE}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="github.com.danne.lee.mapper.DataStaticFlowMapper" >
+  <resultMap id="BaseResultMap" type="github.com.danne.lee.entity.DataStaticFlow" >
+    <id column="collect_time" property="collectTime" jdbcType="TIMESTAMP" />
+    <id column="well_code" property="wellCode" jdbcType="VARCHAR" />
+    <result column="static_flow" property="staticFlow" jdbcType="REAL" />
+    <result column="threshold" property="threshold" jdbcType="REAL" />
+    <result column="static_loads" property="staticLoads" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    collect_time, well_code, static_flow, threshold, static_loads
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="github.com.danne.lee.entity.DataStaticFlowKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_static_flow
+    where collect_time = #{collectTime,jdbcType=TIMESTAMP}
+      and well_code = #{wellCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="github.com.danne.lee.entity.DataStaticFlowKey" >
+    delete from data_static_flow
+    where collect_time = #{collectTime,jdbcType=TIMESTAMP}
+      and well_code = #{wellCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="github.com.danne.lee.entity.DataStaticFlow" >
+    insert into data_static_flow (collect_time, well_code, static_flow, 
+      threshold, static_loads)
+    values (#{collectTime,jdbcType=TIMESTAMP}, #{wellCode,jdbcType=VARCHAR}, #{staticFlow,jdbcType=REAL}, 
+      #{threshold,jdbcType=REAL}, #{staticLoads,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="github.com.danne.lee.entity.DataStaticFlow" >
+    insert into data_static_flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="collectTime != null" >
+        collect_time,
+      </if>
+      <if test="wellCode != null" >
+        well_code,
+      </if>
+      <if test="staticFlow != null" >
+        static_flow,
+      </if>
+      <if test="threshold != null" >
+        threshold,
+      </if>
+      <if test="staticLoads != null" >
+        static_loads,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="collectTime != null" >
+        #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wellCode != null" >
+        #{wellCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staticFlow != null" >
+        #{staticFlow,jdbcType=REAL},
+      </if>
+      <if test="threshold != null" >
+        #{threshold,jdbcType=REAL},
+      </if>
+      <if test="staticLoads != null" >
+        #{staticLoads,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="github.com.danne.lee.entity.DataStaticFlow" >
+    update data_static_flow
+    <set >
+      <if test="staticFlow != null" >
+        static_flow = #{staticFlow,jdbcType=REAL},
+      </if>
+      <if test="threshold != null" >
+        threshold = #{threshold,jdbcType=REAL},
+      </if>
+      <if test="staticLoads != null" >
+        static_loads = #{staticLoads,jdbcType=REAL},
+      </if>
+    </set>
+    where collect_time = #{collectTime,jdbcType=TIMESTAMP}
+      and well_code = #{wellCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="github.com.danne.lee.entity.DataStaticFlow" >
+    update data_static_flow
+    set static_flow = #{staticFlow,jdbcType=REAL},
+      threshold = #{threshold,jdbcType=REAL},
+      static_loads = #{staticLoads,jdbcType=REAL}
+    where collect_time = #{collectTime,jdbcType=TIMESTAMP}
+      and well_code = #{wellCode,jdbcType=VARCHAR}
+  </update>
+</mapper>
