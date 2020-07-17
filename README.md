@@ -40,3 +40,5 @@
     </context>
 </generatorConfiguration>
 ```
+3.执行命令
+`mvn mybatis-generator:generate `
